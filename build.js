@@ -88,6 +88,7 @@ process.nextTick(function () {
   var esprima     = require('esprima');
   var espree      = require('espree');
   var jshint      = require('jshint');
+  var swc         = require('@swc/core');
   [
     {
       name: 'es5-shim',
@@ -284,6 +285,18 @@ process.nextTick(function () {
       },
     },
     */
+   {
+     name:'swc',
+     url: 'https://github.com/swc-project/swc',
+     target_file: 'es6/compilers/swc.html',
+     polyfills: [],
+     compiler: function(code) {
+       return swc.transformSync(code, {
+          jsc: { target: 'es5' },
+          isModule:false
+       }).code;
+     },
+  },
   ].forEach(function(e){
     Object.assign(es6, e);
     es6.browsers = {};

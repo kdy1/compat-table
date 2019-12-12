@@ -12,6 +12,7 @@
   },
   "private": true,
   "dependencies": {
+    "@swc/core": "^1.1.5",
     "babel-core": "latest",
     "babel-preset-es2015": "latest",
     "babel-preset-es2016": "latest",
